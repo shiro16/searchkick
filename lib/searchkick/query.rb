@@ -263,8 +263,7 @@ module Searchkick
               if field == "_all" || field.end_with?(".analyzed")
                 shared_options[:cutoff_frequency] = 0.001 unless operator == "and" || misspellings == false
                 qs.concat [
-                  shared_options.merge(analyzer: "searchkick_search"),
-                  shared_options.merge(analyzer: "searchkick_search2")
+                  shared_options.merge(analyzer: "searchkick_search")
                 ]
               elsif field.end_with?(".exact")
                 f = field.split(".")[0..-2].join(".")
